@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>i kuy bew</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: black;
+    font-family: Arial, sans-serif;
+    color: #f6e8a8;
+    text-align: center;
+    padding: 30px 20px 60px;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 46px;
+    margin: 0 0 10px;
+}
+
+.blessing {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #ffd54f;
+}
+
+.message {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 760px;
+    margin: 0 auto 20px;
+    color: white;
+}
+
+.top-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+audio {
+    width: 300px;
+    max-width: 90%;
+}
+
+button {
+    padding: 14px 26px;
+    font-size: 18px;
+    background: #fdd835;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #fbc02d;
+}
+
+/* whole rotating record */
+.record-wrap {
+    position: relative;
+    width: 720px;
+    height: 720px;
+    margin: 10px auto 0;
+}
+
+.spin-group {
+    position: absolute;
+    inset: 0;
+    animation: spin 16s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.record {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 620px;
+    height: 620px;
+    background: #111;
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 8px #1b1b1b,
+        0 0 0 16px #0a0a0a,
+        0 20px 40px rgba(0,0,0,0.35);
+}
+
+.record::before {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    border-radius: 50%;
+    background:
+        repeating-radial-gradient(
+            circle,
+            #151515 0px,
+            #151515 9px,
+            #101010 10px,
+            #101010 18px
+        );
+}
+
+/* red center */
+.center-label {
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: #e84a2a;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.center-hole {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    background: black;
+    border-radius: 50%;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* curved text */
+.curve-text {
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.curve-text svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.curve-text text {
+    fill: black;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* photo ring */
+.photo-ring {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+}
+
+/* square photos */
+.photo {
+    position: absolute;
+    width: 92px;
+    height: 92px;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+    transition: transform 0.25s ease;
+}
+
+/* keep photos upright while disc spins */
+.photo-slot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 92px;
+    height: 92px;
+    margin-left: -46px;
+    margin-top: -46px;
+}
+
+.photo-slot img {
+    animation: spin-back 16s linear infinite;
+}
+
+@keyframes spin-back {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+}
+
+.photo:hover {
+    transform: scale(1.06);
+}
+
+/* evenly spaced around disc */
+.slot1  { transform: rotate(0deg) translateY(-235px); }
+.slot2  { transform: rotate(36deg) translateY(-235px); }
+.slot3  { transform: rotate(72deg) translateY(-235px); }
+.slot4  { transform: rotate(108deg) translateY(-235px); }
+.slot5  { transform: rotate(144deg) translateY(-235px); }
+.slot6  { transform: rotate(180deg) translateY(-235px); }
+.slot7  { transform: rotate(216deg) translateY(-235px); }
+.slot8  { transform: rotate(252deg) translateY(-235px); }
+.slot9  { transform: rotate(288deg) translateY(-235px); }
+.slot10 { transform: rotate(324deg) translateY(-235px); }
+
+@media (max-width: 800px) {
+    .record-wrap {
+        width: 95vw;
+        height: 95vw;
+        max-width: 720px;
+        max-height: 720px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>and lastly i just wanna say...</h1>
+<div class="blessing">HAPPY BIRTHDAYYYYYYY <-- WOW!!!</div>
+
+<p class="message">
+u might born to late for dinosaurs and too fast for flying cars but just in time too meet tuff ahh person like pat narapat😎 anyways wish u enjoy ur 18 luv u as always jubjub
+</p>
+
+<div class="top-controls">
+    <audio controls autoplay loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button onclick="restart()">rezero anime sud hod</button>
+</div>
+
+<div class="record-wrap">
+    <div class="spin-group">
+        <div class="record"></div>
+
+        <div class="center-label"></div>
+
+        <div class="curve-text">
+            <svg viewBox="0 0 210 210">
+                <defs>
+                    <path id="topArc" d="M 30 125 A 75 75 0 0 1 180 125" />
+                    <path id="bottomArc" d="M 180 90 A 75 75 0 0 1 30 90" />
+                </defs>
+
+                <text>
+                    <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+                        HAPPY BIRTHDAY
+                    </textPath>
+                </text>
+
+                <text>
+                    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">
+                        I KUY BEW
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+
+        <div class="center-hole"></div>
+
+        <div class="photo-ring">
+            <div class="photo-slot slot1"><img src="IMG_3462.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot2"><img src="IMG_3179.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot3"><img src="IMG_1763.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot4"><img src="IMG_1628.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot5"><img src="image_new.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot6"><img src="7E40A8A0-D5FD-429C-AEB5-94CC174EC286.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot7"><img src="1.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot8"><img src="2.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot9"><img src="3.jpg" class="photo" alt=""></div>
+            <div class="photo-slot slot10"><img src="IMG_1577.jpg" class="photo" alt=""></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function restart() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
